@@ -1,0 +1,195 @@
+/*--------- - Body -  ------*/
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif; 
+  transition: background-color 0.3s, color 0.3s; 
+}
+
+main {
+  flex: 1;
+}
+
+/* ---------- Cards ---------- */
+.card { 
+  border-radius: 10px; 
+  transition: transform 0.3s, box-shadow 0.3s; 
+}
+.card:hover { 
+  transform: translateY(-3px); 
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2); 
+}
+
+/* ---------- Badges ---------- */
+.badge.Beginner { background-color: #0d6efd; padding: 10px;}
+.badge.Intermediate { background-color: #198754; padding:10px;}
+.badge.Advanced { background-color: #dc3545; padding:10px;}
+
+/* ---------- Flashcards ---------- */
+.flashcard { 
+  width: 100%; max-width: 320px; min-height: 180px; 
+  border-radius: 10px; border:1px solid #ccc; 
+  display:flex; align-items:center; justify-content:center; 
+  perspective:1000px; cursor:pointer; margin:auto; 
+  transition:transform 0.3s, box-shadow 0.3s; 
+}
+.flashcard:hover { 
+  box-shadow:0 10px 20px rgba(0,0,0,0.2); 
+  transform: scale(1.05);
+}
+.flashcard-inner { 
+  width:100%; height:100%; position:relative; 
+  transform-style: preserve-3d; transition: transform 0.6s;
+}
+.flashcard-front, .flashcard-back { 
+  position:absolute; width:100%; height:100%; backface-visibility:hidden; 
+  display:flex; align-items:center; justify-content:center; 
+  font-size:1.2rem; padding:1rem; border-radius:10px; 
+  color:#000; word-wrap: break-word; text-align: center; border: none;
+}
+.flashcard-back { 
+  transform: rotateY(180deg); background:#f8f9fa; 
+}
+.flipped { transform: rotateY(180deg); }
+
+/* ---------- Responsive layout ---------- */
+#learnHeader { flex-wrap: wrap; justify-content: space-between; }
+#learnHeader select { max-width: 100%; }
+
+/* ---------- Empty Library Message ---------- */
+#emptyLibrary {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 2rem; border: 2px dashed #6c757d; border-radius: 12px;
+  background-color: #f8f9fa; color: #6c757d; font-size: 1.1rem;
+}
+#emptyLibrary .empty-icon { font-size: 3rem; margin-bottom: 1rem; color: #6c757d; }
+
+/* ---------- Learn Tabs ---------- */
+#learn .nav-tabs {
+  display: inline-flex;
+  justify-content: center;
+  white-space: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  margin: 0 auto;
+  padding-bottom: 6px;
+  border-bottom: none;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+#learn .nav-tabs::-webkit-scrollbar { height: 0px; }
+
+#learn .nav-tabs .nav-link {
+  border: 1px solid #ccc;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  margin: 0 5px;
+  padding: 0.5rem 1.2rem;
+  color: #555;
+  background-color: #f8f9fa;
+  transition: all 0.3s ease;
+}
+#learn .nav-tabs .nav-link:hover {
+  background-color: #e2e6ea;
+  color: #0d6efd;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+#learn .nav-tabs .nav-link.active {
+  background-color: #0d6efd;
+  color: #fff;
+  border-color: #0d6efd;
+  border-bottom: 3px solid #0d6efd;
+}
+#learn .nav-tabs::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #ccc;
+  border-radius: 1px;
+}
+
+/* ---------- Learn Capsule Select ---------- */
+#learnHeader #capsuleSelect { min-width: 150px; max-width: 300px; }
+
+/* ---------- Dark Mode ---------- */
+body.dark { 
+  background-color: #121212 !important; 
+  color: #e0e0e0; 
+}
+body.dark .card { 
+  background-color: #1e1e1e; color: #fff; border: 1px solid #0d6efd; 
+}
+body.dark .card h5, body.dark .card p, body.dark .card .badge, body.dark .card .small {
+  color: #fff !important; 
+}
+body.dark .flashcard { 
+  background-color: #1e1e1e; color: #fff; border:2px solid #0d6efd; 
+}
+body.dark .flashcard-front, body.dark .flashcard-back { 
+  background-color: #1e1e1e; color: #fff; border: none; 
+}
+body.dark #learn select, body.dark #learn select option { 
+  background-color:#1e1e1e; color:#e0e0e0; border-color:#0d6efd; 
+}
+body.dark #learn select:focus { outline:none; }
+body.dark #learnShortcuts, body.dark #learnShortcuts b { color:#ffffff; }
+body.dark #learnHeader {
+  background-color:#1e1e1e !important; color:#ffffff !important; border-radius:10px; padding:1rem; display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; 
+}
+body.dark #learnHeader select, body.dark #learnHeader select option { 
+  background-color:#1e1e1e; color:#ffffff; border-color:#0d6efd; 
+}
+body.dark #learn .nav-tabs .nav-link { 
+  color: #cccccc; border: 1px solid #0d6efd; border-bottom: none; border-radius: 5px 5px 0 0; background-color: transparent; 
+}
+body.dark #learn .nav-tabs .nav-link.active { 
+  background-color: #0d6efd; color: #ffffff; border-color: #0d6efd; border-bottom: 3px solid #0d6efd; 
+}
+body.dark #learn .nav-tabs::after {
+  display: block;
+  background-color: #0d6efd;
+  height: 2px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  border-radius: 1px;
+}
+body.dark #emptyLibrary { background-color: #1e1e1e; border-color: #0d6efd; color: #ffffff; }
+body.dark #emptyLibrary .empty-icon { color: #0d6efd; }
+body.dark .text-muted { color: #ffffff !important; }
+
+/* ---------- Footer ---------- */
+footer { margin-top: auto; }
+.site-footer { background-color: #27272c; color: #fff; text-align: center; padding: 15px 10px; font-size: 14px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  #learnShortcuts { display: none !important; }
+}
+@media (max-width: 576px) {
+  .footer-content { font-size: 12px; }
+  #learnHeader { flex-direction: column; align-items: stretch; }
+  #learnHeader #capsuleSelect, #learnHeader select { width: 100%; box-sizing: border-box; }
+  #learn .nav-tabs { display: flex; justify-content: flex-start; overflow-x: auto; padding-bottom: 4px; }
+  #learn .nav-tabs .nav-link { margin: 0 4px; padding: 0.5rem 1rem; }
+  .navbar .d-flex { flex-direction: column; gap: 0.5rem; }
+  .flashcard { max-width: 90%; min-height: 150px; }
+}
+
+/* ---------- Tab panes scroll ---------- */
+#notesTab, #flashcardsTab, #quizTab {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 0.5rem;
+}

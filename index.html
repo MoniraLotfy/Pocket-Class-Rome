@@ -1,0 +1,128 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pocket Classroom</title>
+  <link rel="icon" href="/images/faveicon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+  <!-- Navbar Hamburger Menu -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">📚 Pocket Classroom</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-auto ms-3 mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#" data-target="library">Library</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" data-target="author">Author</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" data-target="learn">Learn</a></li>
+        </ul>
+        <div class="d-flex gap-2 mt-2 mt-lg-0">
+          <button class="btn btn-success" id="newCapsuleBtn">+ New Capsule</button>
+          <button class="btn btn-outline-info" id="importCapsuleBtn">Import</button>
+          <button class="btn btn-outline-light" id="themeBtn">🌙</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="container my-4">
+    <section id="library">
+      <h2 class="h4 mb-3">📦 Library</h2>
+      <div id="capsuleList" class="row gy-3"></div>
+      <div id="emptyLibrary" class="text-center mt-4 d-none">
+        <span class="empty-icon">📝</span>
+        <p class="empty-text mt-2">No capsules yet — click "New Capsule" to create one.</p>
+      </div>
+    </section>
+
+    <section id="author" class="d-none">
+      <h2 class="h4 mb-3">✍️ Author Mode</h2>
+      <form id="authorForm" class="card card-body shadow-sm">
+        <input type="hidden" id="editingId" value="">
+        <div class="row g-2">
+          <div class="col-md-6">
+            <label class="form-label">Title *</label>
+            <input id="title" class="form-control" placeholder="Enter Note Title" required />
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Subject</label>
+            <input id="subject" class="form-control" placeholder="Enter Subject"/>
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Level</label>
+            <select id="level" class="form-select">
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+            </select>
+          </div>
+          <input type="text" id="extraField" placeholder="Extra info(Optional)" class="form-control mb-2" />
+
+          <div class="col-12">
+            <label class="form-label">Notes (one per line)</label>
+            <textarea id="notes" class="form-control" placeholder="Enter notes, one per line" rows="4"></textarea>
+          </div>
+          <div class="col-12">
+            <label class="form-label">Flashcards</label>
+            <div id="flashcardsContainer"></div>
+            <button type="button" class="btn btn-sm btn-outline-primary mb-2" id="addFlashcardBtn">+ Add Flashcard</button>
+          </div>
+          <div class="col-12">
+            <label class="form-label">Quiz Questions</label>
+            <div id="quizContainer"></div>
+            <button type="button" class="btn btn-sm btn-outline-primary mb-2" id="addQuizBtn">+ Add Question</button>
+          </div>
+        </div>
+
+        <div class="mt-2 d-flex gap-2 justify-content-end">
+          <button type="button" class="btn btn-secondary" id="cancelAuthorBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Capsule</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="learn" class="d-none">
+      <h2 class="h4 mb-3">🎓 Learn Mode</h2>
+      <div id="learnHeader" class="card p-3 mb-3 bg-light shadow-sm border-0 d-flex flex-wrap gap-2 align-items-center">
+        <h5 id="learnTitle" class="mb-1 flex-grow-1"></h5>
+        <div class="d-flex gap-2">
+          <span id="learnSubject" class="badge bg-info"></span>
+          <span id="learnLevel" class="badge"></span>
+        </div>
+      </div>
+
+      <ul class="nav nav-tabs" id="learnTabs">
+        <li class="nav-item"><button class="nav-link active" data-tab="notesTab">Notes</button></li>
+        <li class="nav-item"><button class="nav-link" data-tab="flashcardsTab">Flashcards</button></li>
+        <li class="nav-item"><button class="nav-link" data-tab="quizTab">Quiz</button></li>
+      </ul>
+
+      <div class="tab-content mt-3">
+        <div id="notesTab" class="tab-pane fade show active"></div>
+        <div id="flashcardsTab" class="tab-pane fade"></div>
+        <div id="quizTab" class="tab-pane fade"></div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>&copy; 2025 MoniraLotfy. All rights reserved.</p>
+
+    </div>
+  </footer>
+  
+</body>
+</html>
